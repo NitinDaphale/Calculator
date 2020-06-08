@@ -51,17 +51,21 @@ export default class Claculator extends React.Component {
 
         break;
       case "=":
-        newState.result =
-          newState.operator === "+"
-            ? parseInt(newState.operand1) + parseInt(newState.operand2)
-            : newState.operator === "-"
-            ? newState.operand1 - newState.operand2
-            : newState.operator === "*"
-            ? newState.operand1 * newState.operand2
-            : newState.operator === "/"
-            ? newState.operand1 / newState.operand2
-            : newState.result;
-        newState.screenData = newState.result;
+        if (newState.operand1) {
+          newState.result =
+            newState.operator === "+"
+              ? parseInt(newState.operand1) + parseInt(newState.operand2)
+              : newState.operator === "-"
+              ? newState.operand1 - newState.operand2
+              : newState.operator === "*"
+              ? newState.operand1 * newState.operand2
+              : newState.operator === "/"
+              ? newState.operand1 / newState.operand2
+              : newState.result;
+          newState.screenData = newState.result;
+          newState.operand1 = newState.result;
+          newState.operand2 = "";
+        }
         break;
       default:
     }
