@@ -72,10 +72,11 @@ export default class Claculator extends React.Component {
   render() {
     return (
       <div>
-        <h1>My calcu</h1>
+        <h1>My calculator</h1>
         <textarea value={this.state.screenData} />
         <table>
           <tbody>
+            <tr />
             <tr>
               <th>
                 <button name="" value="1" onClick={this.onClick}>
