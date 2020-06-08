@@ -26,14 +26,12 @@ export default class Claculator extends React.Component {
       case "7":
       case "8":
       case "9":
-        newState.operand1 =
-          newState.operand1 === ""
-            ? e.target.value
-            : newState.operand1 + e.target.value;
-        newState.operand2 =
-          newState.operator === ""
-            ? e.target.value
-            : newState.operand2 + e.target.value;
+        if (!newState.operator) {
+          newState.operand1 += e.target.value;
+        } else {
+          newState.operand2 += e.target.value;
+        }
+
         newState.screenData += e.target.value;
 
         break;
@@ -41,12 +39,14 @@ export default class Claculator extends React.Component {
       case "-":
       case "*":
       case "/":
-        newState.screenData =
-          newState.operand1 && newState.operand2
-            ? `${newState.operand1} ${e.target.value} ${newState.operand2}`
-            : newState.operand1
-            ? `${newState.operand1} ${e.target.value}`
-            : "";
+        if (newState.operand1 && newState.operand2) {
+          newState.screenData = `${newState.operand1} ${e.target.value} ${
+            newState.operand2
+          }`;
+        } else {
+          newState.screenData = `${newState.operand1} ${e.target.value}`;
+        }
+
         newState.operator = e.target.value;
 
         break;
