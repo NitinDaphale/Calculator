@@ -53,7 +53,7 @@ export default class Claculator extends React.Component {
       case "=":
         newState.result =
           newState.operator === "+"
-            ? newState.operand1 + newState.operand2
+            ? parseInt(newState.operand1) + parseInt(newState.operand2)
             : newState.operator === "-"
             ? newState.operand1 - newState.operand2
             : newState.operator === "*"
